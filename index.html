@@ -12,10 +12,25 @@
             background-attachment: fixed;
             margin: 0;
             padding: 20px;
+        }
+        .title-container {
+            width: 50vw;
+            height: 20vw;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 20px auto;
+            cursor: pointer;
+            transition: background-image 0.3s;
+        }
+        .name { background-image: url('assets/NAME01.png'); }
+        .name:hover { background-image: url('assets/NAME02.png'); }
+        .grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
             justify-items: center;
+            margin-top: 50px;
         }
         .image-container {
             width: 25vw;
@@ -37,17 +52,22 @@
     </style>
 </head>
 <body>
-    <a href="animations.html">
-        <div class="image-container animations"></div>
-    </a>
-    <a href="figure.html">
-        <div class="image-container figure"></div>
-    </a>
-    <a href="environments.html">
-        <div class="image-container environments"></div>
-    </a>
-    <a href="contact.html">
-        <div class="image-container contact"></div>
-    </a>
+    <header>
+        <div class="title-container name"></div>
+    </header>
+    <div class="grid">
+        <a href="animations.html">
+            <div class="image-container animations"></div>
+        </a>
+        <a href="figure.html">
+            <div class="image-container figure"></div>
+        </a>
+        <a href="environments.html">
+            <div class="image-container environments"></div>
+        </a>
+        <a href="contact.html">
+            <div class="image-container contact"></div>
+        </a>
+    </div>
 </body>
 </html>

@@ -11,9 +11,24 @@
             margin: 0;
             padding: 20px;
         }
+        .title-container {
+            width: 50vw;
+            height: 20vw;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 20px auto;
+            cursor: pointer;
+            transition: background-image 0.3s;
+        }
+        .name { background-image: url('assets/NAME01.png'); }
+        .name:hover { background-image: url('assets/NAME02.png'); }
     </style>
 </head>
 <body>
+    <header>
+        <div class="title-container name"></div>
+    </header>
     <h1>Contact</h1>
     <p>Placeholder content.</p>
     <a href="index.html">Back to Home</a>
