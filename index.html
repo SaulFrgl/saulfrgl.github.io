@@ -76,6 +76,20 @@
       .image-container:nth-child(4) {
         transform: translateX(20px) translateY(20px);
       }
+      @media (orientation: portrait) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .image-container {
+          width: min(80vw, 15vh);
+          height: min(80vw, 15vh);
+        }
+        .image-container:nth-child(2),
+        .image-container:nth-child(3),
+        .image-container:nth-child(4) {
+          transform: none;
+        }
+      }
       .contact {
         background-image: url("assets/CONTACT01.png");
       }
