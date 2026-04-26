@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saul Frgl</title>
+    <style>
+        body {
+            background-image: url('assets/background.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            justify-items: center;
+        }
+        .image-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            cursor: pointer;
+        }
+        .image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s;
+        }
+        .base { opacity: 1; }
+        .hover { opacity: 0; }
+        .image-container:hover .base { opacity: 0; }
+        .image-container:hover .hover { opacity: 1; }
+    </style>
+</head>
+<body>
+    <a href="contact.html">
+        <div class="image-container">
+            <img src="assets/CONTACT01.png" class="base">
+            <img src="assets/CONTACT02.png" class="hover">
+        </div>
+    </a>
+    <a href="environments.html">
+        <div class="image-container">
+            <img src="assets/ENVIRONMENTS01.png" class="base">
+            <img src="assets/ENVIRONMENTS02.png" class="hover">
+        </div>
+    </a>
+    <a href="figure.html">
+        <div class="image-container">
+            <img src="assets/FIGURE01.png" class="base">
+            <img src="assets/FIGURE02.png" class="hover">
+        </div>
+    </a>
+    <a href="animations.html">
+        <div class="image-container">
+            <img src="assets/TV01.png" class="base">
+            <img src="assets/TV02.png" class="hover">
+        </div>
+    </a>
+</body>
+</html>
