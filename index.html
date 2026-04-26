@@ -16,15 +16,17 @@
         background-repeat: no-repeat;
         background-attachment: fixed;
         margin: 0;
-        padding: 20px;
+        padding: 0;
         font-family: Arial, sans-serif;
       }
       .title-container {
-        position: relative;
+        position: absolute;
+        top: 20px;
+        left: 20px;
         width: 40vw;
         height: 15vw;
-        margin: 0 auto;
         cursor: pointer;
+        z-index: 10;
       }
       .title-base, .title-hover {
         position: absolute;
@@ -51,14 +53,13 @@
       .title-container:hover .title-hover {
         opacity: 1;
       }
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-        justify-items: center;
-        margin-top: 20px;
+      .diamond-container {
+        position: relative;
+        width: 100%;
+        height: 100vh;
       }
       .image-container {
+        position: absolute;
         width: min(20vw, 30vh);
         height: min(20vw, 30vh);
         background-size: contain;
@@ -67,52 +68,70 @@
         cursor: pointer;
         transition: background-image 0.3s;
       }
-      .image-container:nth-child(2) {
-        transform: translateX(20px);
+      .animations {
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        background-image: url("assets/TV01.png");
       }
-      .image-container:nth-child(3) {
-        transform: translateY(20px);
-      }
-      .image-container:nth-child(4) {
-        transform: translateX(20px) translateY(20px);
-      }
-      @media (orientation: portrait) {
-        .grid {
-          grid-template-columns: 1fr;
-        }
-        .image-container {
-          width: min(80vw, 15vh);
-          height: min(80vw, 15vh);
-        }
-        .image-container:nth-child(2),
-        .image-container:nth-child(3),
-        .image-container:nth-child(4) {
-          transform: none;
-        }
-      }
-      .contact {
-        background-image: url("assets/CONTACT01.png");
-      }
-      .contact:hover {
-        background-image: url("assets/CONTACT02.png");
-      }
-      .environments {
-        background-image: url("assets/ENVIRONMENTS01.png");
-      }
-      .environments:hover {
-        background-image: url("assets/ENVIRONMENTS02.png");
+      .animations:hover {
+        background-image: url("assets/TV02.png");
       }
       .figure {
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
         background-image: url("assets/FIGURE01.png");
       }
       .figure:hover {
         background-image: url("assets/FIGURE02.png");
       }
-      .animations {
-        background-image: url("assets/TV01.png");
+      .environments {
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        background-image: url("assets/ENVIRONMENTS01.png");
       }
-      .animations:hover {
-        background-image: url("assets/TV02.png");
+      .environments:hover {
+        background-image: url("assets/ENVIRONMENTS02.png");
+      }
+      .contact {
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        background-image: url("assets/CONTACT01.png");
+      }
+      .contact:hover {
+        background-image: url("assets/CONTACT02.png");
+      }
+      @media (orientation: portrait) {
+        .diamond-container {
+          height: 100vh;
+        }
+        .image-container {
+          width: min(30vw, 20vh);
+          height: min(30vw, 20vh);
+        }
+        .animations {
+          top: 10%;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+        .figure {
+          top: 50%;
+          right: 10%;
+          transform: translateY(-50%);
+        }
+        .environments {
+          bottom: 10%;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+        .contact {
+          top: 50%;
+          left: 10%;
+          transform: translateY(-50%);
+        }
       }
     </style>
   </head>
@@ -125,7 +144,7 @@
             </div>
         </a>
     </header>
-    <div class="grid">
+    <div class="diamond-container">
       <a href="animations.html">
         <div class="image-container animations"></div>
       </a>
