@@ -13,55 +13,41 @@
             margin: 0;
             padding: 20px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 20px;
             justify-items: center;
         }
         .image-container {
-            position: relative;
             width: 200px;
             height: 200px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
             cursor: pointer;
+            transition: background-image 0.3s;
         }
-        .image-container img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: opacity 0.3s;
-        }
-        .base { opacity: 1; }
-        .hover { opacity: 0; }
-        .image-container:hover .base { opacity: 0; }
-        .image-container:hover .hover { opacity: 1; }
+        .contact { background-image: url('assets/CONTACT01.png'); }
+        .contact:hover { background-image: url('assets/CONTACT02.png'); }
+        .environments { background-image: url('assets/ENVIRONMENTS01.png'); }
+        .environments:hover { background-image: url('assets/ENVIRONMENTS02.png'); }
+        .figure { background-image: url('assets/FIGURE01.png'); }
+        .figure:hover { background-image: url('assets/FIGURE02.png'); }
+        .animations { background-image: url('assets/TV01.png'); }
+        .animations:hover { background-image: url('assets/TV02.png'); }
     </style>
 </head>
 <body>
     <a href="contact.html">
-        <div class="image-container">
-            <img src="assets/CONTACT01.png" class="base">
-            <img src="assets/CONTACT02.png" class="hover">
-        </div>
+        <div class="image-container contact"></div>
     </a>
     <a href="environments.html">
-        <div class="image-container">
-            <img src="assets/ENVIRONMENTS01.png" class="base">
-            <img src="assets/ENVIRONMENTS02.png" class="hover">
-        </div>
+        <div class="image-container environments"></div>
     </a>
     <a href="figure.html">
-        <div class="image-container">
-            <img src="assets/FIGURE01.png" class="base">
-            <img src="assets/FIGURE02.png" class="hover">
-        </div>
+        <div class="image-container figure"></div>
     </a>
     <a href="animations.html">
-        <div class="image-container">
-            <img src="assets/TV01.png" class="base">
-            <img src="assets/TV02.png" class="hover">
-        </div>
+        <div class="image-container animations"></div>
     </a>
 </body>
 </html>
