@@ -12,27 +12,46 @@
         padding: 20px;
       }
       .title-container {
+        position: relative;
         width: 50vw;
         height: 20vw;
+        margin: 0 auto;
+        cursor: pointer;
+      }
+      .title-base, .title-hover {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
-        margin: 0 auto;
-        cursor: pointer;
-        transition: background-image 0.3s;
+        transition: opacity 0.3s;
       }
-      .name {
+      .title-base {
         background-image: url("assets/NAME01.png");
+        opacity: 1;
       }
-      .name:hover {
+      .title-hover {
         background-image: url("assets/NAME02.png");
+        opacity: 0;
+      }
+      .title-container:hover .title-base {
+        opacity: 0;
+      }
+      .title-container:hover .title-hover {
+        opacity: 1;
       }
     </style>
   </head>
   <body>
     <header>
       <a href="index.html">
-        <div class="title-container name"></div>
+        <div class="title-container">
+          <div class="title-base"></div>
+          <div class="title-hover"></div>
+        </div>
       </a>
     </header>
     <h1>Contact</h1>
