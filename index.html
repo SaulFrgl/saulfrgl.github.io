@@ -1,73 +1,93 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Saul Frgl</title>
     <style>
-        body {
-            background-image: url('assets/background.png');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            margin: 0;
-            padding: 20px;
-        }
-        .title-container {
-            width: 50vw;
-            height: 20vw;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            margin: 20px auto;
-            cursor: pointer;
-            transition: background-image 0.3s;
-        }
-        .name { background-image: url('assets/NAME01.png'); }
-        .name:hover { background-image: url('assets/NAME02.png'); }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            justify-items: center;
-            margin-top: 50px;
-        }
-        .image-container {
-            width: 25vw;
-            height: 25vw;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            cursor: pointer;
-            transition: background-image 0.3s;
-        }
-        .contact { background-image: url('assets/CONTACT01.png'); }
-        .contact:hover { background-image: url('assets/CONTACT02.png'); }
-        .environments { background-image: url('assets/ENVIRONMENTS01.png'); }
-        .environments:hover { background-image: url('assets/ENVIRONMENTS02.png'); }
-        .figure { background-image: url('assets/FIGURE01.png'); }
-        .figure:hover { background-image: url('assets/FIGURE02.png'); }
-        .animations { background-image: url('assets/TV01.png'); }
-        .animations:hover { background-image: url('assets/TV02.png'); }
+      body {
+        background-image: url("assets/background.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        margin: 0;
+        padding: 20px;
+      }
+      .title-container {
+        width: 50vw;
+        height: 20vw;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin: 20px auto;
+        cursor: pointer;
+        transition: background-image 0.3s;
+      }
+      .name {
+        background-image: url("assets/NAME01.png");
+      }
+      .name:hover {
+        background-image: url("assets/NAME02.png");
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        justify-items: center;
+        margin-top: 50px;
+      }
+      .image-container {
+        width: 25vw;
+        height: 25vw;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        cursor: pointer;
+        transition: background-image 0.3s;
+      }
+      .contact {
+        background-image: url("assets/CONTACT01.png");
+      }
+      .contact:hover {
+        background-image: url("assets/CONTACT02.png");
+      }
+      .environments {
+        background-image: url("assets/ENVIRONMENTS01.png");
+      }
+      .environments:hover {
+        background-image: url("assets/ENVIRONMENTS02.png");
+      }
+      .figure {
+        background-image: url("assets/FIGURE01.png");
+      }
+      .figure:hover {
+        background-image: url("assets/FIGURE02.png");
+      }
+      .animations {
+        background-image: url("assets/TV01.png");
+      }
+      .animations:hover {
+        background-image: url("assets/TV02.png");
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <div class="title-container name"></div>
+      <div class="title-container name"></div>
     </header>
     <div class="grid">
-        <a href="animations.html">
-            <div class="image-container animations"></div>
-        </a>
-        <a href="figure.html">
-            <div class="image-container figure"></div>
-        </a>
-        <a href="environments.html">
-            <div class="image-container environments"></div>
-        </a>
-        <a href="contact.html">
-            <div class="image-container contact"></div>
-        </a>
+      <a href="animations.html">
+        <div class="image-container animations"></div>
+      </a>
+      <a href="figure.html">
+        <div class="image-container figure"></div>
+      </a>
+      <a href="environments.html">
+        <div class="image-container environments"></div>
+      </a>
+      <a href="contact.html">
+        <div class="image-container contact"></div>
+      </a>
     </div>
-</body>
+  </body>
 </html>
