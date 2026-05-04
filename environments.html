@@ -12,18 +12,25 @@
       body {
         background-image: url("assets/background.png");
         background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
         margin: 0;
-        padding: 20px;
+        padding: 112px 20px 20px;
         font-family: Arial, sans-serif;
+        overflow-y: scroll;
+        overflow-x: hidden;
       }
       header {
+        position: fixed;
+        top: 4px;
+        left: 0;
+        right: 0;
         display: flex;
         justify-content: center;
         line-height: 0;
+        z-index: 10;
       }
-      header a {
-        display: block;
-      }
+      header a { display: block; }
       .title-container {
         position: relative;
         width: 360px;

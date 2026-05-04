@@ -11,6 +11,8 @@
       }
       html {
         scrollbar-gutter: stable;
+        overflow: hidden;
+        height: 100%;
       }
       * {
         box-sizing: border-box;
@@ -25,6 +27,9 @@
         font-family: Arial, sans-serif;
         color: #2d2414;
         position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
       }
       body::before {
         content: "";
@@ -36,19 +41,23 @@
         pointer-events: none;
       }
       header {
+        position: fixed;
+        top: 4px;
+        left: 0;
+        right: 0;
         display: flex;
         justify-content: center;
         line-height: 0;
+        z-index: 10;
       }
-      header a {
-        display: block;
-      }
+      header a { display: block; }
       .page {
-        min-height: 100vh;
+        height: 100%;
         display: flex;
         flex-direction: column;
         position: relative;
         z-index: 1;
+        padding-top: 112px;
       }
       .title-container {
         position: relative;
