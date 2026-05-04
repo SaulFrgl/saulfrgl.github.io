@@ -12,6 +12,31 @@
         margin: 0;
         padding: 20px;
         font-family: Arial, sans-serif;
+        position: relative;
+      }
+      .saul-container {
+        position: fixed;
+        right: 4vw;
+        bottom: 0;
+        width: min(28vw, 34vh);
+        aspect-ratio: 1 / 1;
+        background-image: url("assets/SAUL01 NO TABLE.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: bottom right;
+        cursor: pointer;
+        z-index: 2;
+        transition: background-image 0.3s ease;
+      }
+      .saul-container:hover {
+        background-image: url("assets/SAUL02 NO TABLE.png");
+      }
+      @media (orientation: portrait) {
+        .saul-container {
+          right: 2vw;
+          bottom: 0;
+          width: min(52vw, 26vh);
+        }
       }
       .title-container {
         position: relative;
@@ -58,5 +83,8 @@
     </header>
     <h1>Contact</h1>
     <p>Placeholder content.</p>
+    <a href="index.html" aria-label="Saul image">
+      <div class="saul-container"></div>
+    </a>
   </body>
 </html>
