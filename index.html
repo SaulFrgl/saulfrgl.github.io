@@ -9,6 +9,7 @@
     <link rel="preload" href="assets/ENVIRONMENTS02.png" as="image" />
     <link rel="preload" href="assets/FIGURE02.png" as="image" />
     <link rel="preload" href="assets/TV02.png" as="image" />
+    <link rel="preload" href="assets/STICKERS02.png" as="image" />
     <style>
       body {
         background-image: url("assets/background.png");
@@ -53,10 +54,15 @@
       }
       .grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
         gap: 20px;
         justify-items: center;
         margin-top: 20px;
+      }
+      .row {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
       }
       .image-container {
         width: min(20vw, 30vh);
@@ -67,27 +73,10 @@
         cursor: pointer;
         transition: background-image 0.3s;
       }
-      .image-container:nth-child(2) {
-        transform: translateX(20px);
-      }
-      .image-container:nth-child(3) {
-        transform: translateY(20px);
-      }
-      .image-container:nth-child(4) {
-        transform: translateX(20px) translateY(20px);
-      }
       @media (orientation: portrait) {
-        .grid {
-          grid-template-columns: 1fr;
-        }
         .image-container {
           width: min(80vw, 15vh);
           height: min(80vw, 15vh);
-        }
-        .image-container:nth-child(2),
-        .image-container:nth-child(3),
-        .image-container:nth-child(4) {
-          transform: none;
         }
       }
       .contact {
@@ -114,6 +103,12 @@
       .animations:hover {
         background-image: url("assets/TV02.png");
       }
+      .stickers {
+        background-image: url("assets/STICKERS01.png");
+      }
+      .stickers:hover {
+        background-image: url("assets/STICKERS02.png");
+      }
     </style>
   </head>
   <body>
@@ -126,18 +121,25 @@
         </a>
     </header>
     <div class="grid">
-      <a href="animations.html">
-        <div class="image-container animations"></div>
-      </a>
-      <a href="figure.html">
-        <div class="image-container figure"></div>
-      </a>
-      <a href="environments.html">
-        <div class="image-container environments"></div>
-      </a>
-      <a href="contact.html">
-        <div class="image-container contact"></div>
-      </a>
+      <div class="row top-row">
+        <a href="animations.html">
+          <div class="image-container animations"></div>
+        </a>
+        <a href="figure.html">
+          <div class="image-container figure"></div>
+        </a>
+      </div>
+      <div class="row bottom-row">
+        <a href="environments.html">
+          <div class="image-container environments"></div>
+        </a>
+        <a href="stickers.html">
+          <div class="image-container stickers"></div>
+        </a>
+        <a href="contact.html">
+          <div class="image-container contact"></div>
+        </a>
+      </div>
     </div>
   </body>
 </html>
