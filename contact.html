@@ -6,6 +6,9 @@
     <title>Contact</title>
     <link rel="icon" href="assets/ICON.png" type="image/png" />
     <style>
+      html {
+        scrollbar-gutter: stable;
+      }
       body {
         background-image: url("assets/background.png");
         background-size: cover;
@@ -14,12 +17,20 @@
         font-family: Arial, sans-serif;
         position: relative;
       }
+      header {
+        display: flex;
+        justify-content: center;
+        line-height: 0;
+      }
+      header a {
+        display: block;
+      }
       .saul-container {
         position: fixed;
         right: 4vw;
         bottom: 0;
-        width: min(28vw, 34vh);
-        aspect-ratio: 1 / 1;
+        width: min(26vw, 30vh);
+        aspect-ratio: 2282 / 955;
         background-image: url("assets/SAUL01 NO TABLE.png");
         background-size: contain;
         background-repeat: no-repeat;
@@ -35,14 +46,14 @@
         .saul-container {
           right: 2vw;
           bottom: 0;
-          width: min(52vw, 26vh);
+          width: min(44vw, 22vh);
         }
       }
       .title-container {
         position: relative;
-        width: 40vw;
-        height: 15vw;
-        margin: 0 auto;
+        width: 360px;
+        height: 94px;
+        margin: 0 auto 4px;
         cursor: pointer;
       }
       .title-base, .title-hover {

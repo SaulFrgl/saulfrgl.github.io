@@ -6,6 +6,9 @@
     <title>Environments</title>
     <link rel="icon" href="assets/ICON.png" type="image/png" />
     <style>
+      html {
+        scrollbar-gutter: stable;
+      }
       body {
         background-image: url("assets/background.png");
         background-size: cover;
@@ -13,11 +16,19 @@
         padding: 20px;
         font-family: Arial, sans-serif;
       }
+      header {
+        display: flex;
+        justify-content: center;
+        line-height: 0;
+      }
+      header a {
+        display: block;
+      }
       .title-container {
         position: relative;
-        width: 40vw;
-        height: 15vw;
-        margin: 0 auto;
+        width: 360px;
+        height: 94px;
+        margin: 0 auto 4px;
         cursor: pointer;
       }
       .title-base, .title-hover {

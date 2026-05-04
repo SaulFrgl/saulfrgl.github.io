@@ -18,14 +18,24 @@
         background-repeat: no-repeat;
         background-attachment: fixed;
         margin: 0;
-        padding: 12px 20px 20px;
+        padding: 4px 14px 10px;
         font-family: Arial, sans-serif;
+        min-height: 100vh;
+        overflow: hidden;
+      }
+      header {
+        display: flex;
+        justify-content: center;
+        line-height: 0;
+      }
+      header a {
+        display: block;
       }
       .title-container {
         position: relative;
-        width: 40vw;
-        height: 15vw;
-        margin: 0 auto;
+        width: 360px;
+        height: 94px;
+        margin: 0 auto 4px;
         cursor: pointer;
       }
       .title-base,
@@ -56,20 +66,20 @@
       }
       .grid {
         display: grid;
-        gap: 14px;
+        gap: 0;
         justify-items: center;
-        margin-top: -24px;
+        margin-top: -18px;
       }
       .row {
         display: flex;
         justify-content: center;
         align-items: flex-end;
-        gap: 20px;
+        gap: 6px;
         flex-wrap: wrap;
       }
       .image-container {
-        width: min(20vw, 30vh);
-        height: min(20vw, 30vh);
+        width: min(26vw, 36vh);
+        height: min(26vw, 36vh);
         background-size: contain;
         background-repeat: no-repeat;
         background-position: bottom center;
@@ -78,12 +88,12 @@
       }
       @media (orientation: portrait) {
         .image-container {
-          width: min(80vw, 15vh);
-          height: min(80vw, 15vh);
+          width: min(86vw, 20vh);
+          height: min(86vw, 20vh);
         }
         .animations {
-          width: calc(min(80vw, 15vh) * 1.15);
-          height: calc(min(80vw, 15vh) * 1.15);
+          width: calc(min(86vw, 20vh) * 1.15);
+          height: calc(min(86vw, 20vh) * 1.15);
         }
       }
       .contact {
@@ -106,8 +116,8 @@
       }
       .animations {
         background-image: url("assets/TV01.png");
-        width: calc(min(20vw, 30vh) * 1.15);
-        height: calc(min(20vw, 30vh) * 1.15);
+        width: calc(min(26vw, 36vh) * 1.15);
+        height: calc(min(26vw, 36vh) * 1.15);
       }
       .animations:hover {
         background-image: url("assets/TV02.png");
@@ -122,8 +132,8 @@
         position: fixed;
         right: 4vw;
         bottom: 0;
-        width: min(28vw, 34vh);
-        aspect-ratio: 1 / 1;
+        width: min(26vw, 30vh);
+        aspect-ratio: 2282 / 955;
         background-image: url("assets/SAUL01 NO TABLE.png");
         background-size: contain;
         background-repeat: no-repeat;
@@ -139,7 +149,7 @@
         .saul-container {
           right: 2vw;
           bottom: 0;
-          width: min(52vw, 26vh);
+          width: min(44vw, 22vh);
         }
       }
     </style>
