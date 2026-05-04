@@ -6,21 +6,36 @@
     <title>Figure</title>
     <link rel="icon" href="assets/ICON.png" type="image/png" />
     <style>
+      :root {
+        --shadow: rgba(0, 0, 0, 0.18);
+      }
+      * {
+        box-sizing: border-box;
+      }
       body {
+        margin: 0;
+        min-height: 100vh;
         background-image: url("assets/background.png");
         background-size: cover;
-        margin: 0;
-        padding: 20px;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
         font-family: Arial, sans-serif;
+        color: #2d2414;
+      }
+      .page {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
       }
       .title-container {
         position: relative;
-        width: 40vw;
-        height: 15vw;
+        width: min(40vw, 460px);
+        height: min(15vw, 170px);
         margin: 0 auto;
         cursor: pointer;
       }
-      .title-base, .title-hover {
+      .title-base,
+      .title-hover {
         position: absolute;
         top: 0;
         left: 0;
@@ -45,18 +60,237 @@
       .title-container:hover .title-hover {
         opacity: 1;
       }
+      .gallery {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 0 20px 20px;
+        gap: 18px;
+      }
+      .viewer-wrap {
+        flex: 1;
+        display: grid;
+        place-items: center;
+        padding: 8px 0 6px;
+      }
+      .viewer {
+        position: relative;
+        width: min(84vw, 1100px);
+        height: min(64vh, 760px);
+        background: transparent;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 72px minmax(0, 1fr) 72px;
+        align-items: center;
+        gap: 14px;
+      }
+      .viewer img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+        opacity: 0;
+        transition: opacity 0.55s ease;
+        will-change: opacity;
+        grid-column: 2;
+        grid-row: 1;
+      }
+      .viewer img.is-visible {
+        opacity: 1;
+      }
+      .nav-arrow {
+        position: relative;
+        transform: none;
+        width: 56px;
+        height: 56px;
+        border: none;
+        border-radius: 50%;
+        background: rgba(255, 250, 235, 0.55);
+        color: #332913;
+        font-size: 34px;
+        line-height: 1;
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        box-shadow: 0 8px 20px var(--shadow);
+        user-select: none;
+        z-index: 2;
+      }
+      .nav-arrow:hover {
+        background: rgba(255, 250, 235, 1);
+      }
+      .nav-arrow.left {
+        grid-column: 1;
+        justify-self: center;
+      }
+      .nav-arrow.right {
+        grid-column: 3;
+        justify-self: center;
+      }
+      .thumb-strip {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        align-items: center;
+        overflow-x: auto;
+        padding: 12px 14px 6px;
+        scrollbar-width: thin;
+        background: transparent;
+        border-top: 1px solid rgba(63, 48, 22, 0.18);
+      }
+      .thumb {
+        flex: 0 0 auto;
+        width: 88px;
+        height: 88px;
+        border: none;
+        background: transparent;
+        padding: 0;
+        cursor: pointer;
+        transition: transform 0.15s ease, opacity 0.15s ease;
+      }
+      .thumb:hover {
+        transform: translateY(-2px);
+      }
+      .thumb.active {
+        opacity: 0.8;
+      }
+      .thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+      }
+      @media (max-width: 700px) {
+        .gallery {
+          padding: 0 12px 12px;
+          gap: 12px;
+        }
+        .viewer {
+          width: 92vw;
+          height: 58vh;
+          grid-template-columns: 54px minmax(0, 1fr) 54px;
+          gap: 8px;
+        }
+        .nav-arrow {
+          width: 46px;
+          height: 46px;
+          font-size: 28px;
+        }
+        .nav-arrow.left {
+          left: 10px;
+        }
+        .nav-arrow.right {
+          right: 10px;
+        }
+        .thumb {
+          width: 72px;
+          height: 72px;
+        }
+      }
     </style>
   </head>
   <body>
-    <header>
-      <a href="index.html">
-        <div class="title-container">
-          <div class="title-base"></div>
-          <div class="title-hover"></div>
-        </div>
-      </a>
-    </header>
-    <h1>Figure</h1>
-    <p>Placeholder content.</p>
+    <div class="page">
+      <header>
+        <a href="index.html">
+          <div class="title-container">
+            <div class="title-base"></div>
+            <div class="title-hover"></div>
+          </div>
+        </a>
+      </header>
+
+      <main class="gallery">
+        <section class="viewer-wrap">
+          <div class="viewer" aria-label="Figure viewer">
+            <button class="nav-arrow left" type="button" aria-label="Previous figure">
+              &#8249;
+            </button>
+            <img id="mainImageA" src="" alt="Figure image" />
+            <img id="mainImageB" src="" alt="Figure image" />
+            <button class="nav-arrow right" type="button" aria-label="Next figure">
+              &#8250;
+            </button>
+          </div>
+        </section>
+
+        <nav class="thumb-strip" id="thumbStrip" aria-label="Figure thumbnails"></nav>
+      </main>
+    </div>
+
+    <script>
+      const figures = [
+        "figure_assets/FIGURE01.png",
+        "figure_assets/FIGURE02.png",
+        "figure_assets/FIGURE03.png",
+        "figure_assets/FIGURE04.png",
+        "figure_assets/FIGURE05.png",
+        "figure_assets/FIGURE06.png",
+        "figure_assets/FIGURE07.png",
+        "figure_assets/FIGURE08.png",
+        "figure_assets/FIGURE09.png",
+        "figure_assets/FIGURE10.png",
+        "figure_assets/FIGURE11.png",
+        "figure_assets/FIGURE12.png",
+        "figure_assets/FIGURE13.png",
+      ];
+
+      const mainImages = [
+        document.getElementById("mainImageA"),
+        document.getElementById("mainImageB"),
+      ];
+      const thumbStrip = document.getElementById("thumbStrip");
+      const leftArrow = document.querySelector(".nav-arrow.left");
+      const rightArrow = document.querySelector(".nav-arrow.right");
+      let currentIndex = 0;
+      let visibleImageIndex = 0;
+      const preloadImages = figures.map((src) => {
+        const image = new Image();
+        image.src = src;
+        return image;
+      });
+
+      function setFigure(index) {
+        currentIndex = (index + figures.length) % figures.length;
+        const nextImage = mainImages[1 - visibleImageIndex];
+        const currentImage = mainImages[visibleImageIndex];
+        nextImage.src = figures[currentIndex];
+        nextImage.alt = `Figure ${String(currentIndex + 1).padStart(2, "0")}`;
+        requestAnimationFrame(() => {
+          nextImage.classList.add("is-visible");
+          currentImage.classList.remove("is-visible");
+          visibleImageIndex = 1 - visibleImageIndex;
+        });
+        [...thumbStrip.children].forEach((thumb, thumbIndex) => {
+          thumb.classList.toggle("active", thumbIndex === currentIndex);
+        });
+      }
+
+      figures.forEach((src, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "thumb";
+        button.setAttribute("aria-label", `Show figure ${index + 1}`);
+
+        const img = document.createElement("img");
+        img.src = src;
+        img.alt = `Thumbnail for figure ${index + 1}`;
+        button.appendChild(img);
+
+        button.addEventListener("click", () => setFigure(index));
+        thumbStrip.appendChild(button);
+      });
+
+      leftArrow.addEventListener("click", () => setFigure(currentIndex - 1));
+      rightArrow.addEventListener("click", () => setFigure(currentIndex + 1));
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowLeft") setFigure(currentIndex - 1);
+        if (event.key === "ArrowRight") setFigure(currentIndex + 1);
+      });
+
+      setFigure(0);
+    </script>
   </body>
 </html>
