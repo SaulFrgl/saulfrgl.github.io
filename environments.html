@@ -6,19 +6,38 @@
     <title>Environments</title>
     <link rel="icon" href="assets/ICON.png" type="image/png" />
     <style>
+      :root {
+        --shadow: rgba(0, 0, 0, 0.16);
+      }
       html {
         scrollbar-gutter: stable;
+        overflow: hidden;
+        height: 100%;
+      }
+      * {
+        box-sizing: border-box;
       }
       body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
         background-image: url("assets/background.png");
         background-size: cover;
         background-repeat: no-repeat;
         background-attachment: fixed;
-        margin: 0;
-        padding: 112px 20px 20px;
         font-family: Arial, sans-serif;
-        overflow-y: scroll;
-        overflow-x: hidden;
+        color: #2d2414;
+        position: relative;
+        overflow: hidden;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background:
+          radial-gradient(circle at 50% 28%, rgba(255, 255, 255, 0.16), transparent 48%),
+          linear-gradient(to bottom, rgba(255, 255, 255, 0.14), rgba(0, 0, 0, 0.06));
+        pointer-events: none;
       }
       header {
         position: fixed;
@@ -30,7 +49,17 @@
         line-height: 0;
         z-index: 10;
       }
-      header a { display: block; }
+      header a {
+        display: block;
+      }
+      .page {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        z-index: 1;
+        padding-top: 112px;
+      }
       .title-container {
         position: relative;
         width: 360px;
@@ -38,7 +67,8 @@
         margin: 0 auto 4px;
         cursor: pointer;
       }
-      .title-base, .title-hover {
+      .title-base,
+      .title-hover {
         position: absolute;
         top: 0;
         left: 0;
@@ -63,18 +93,240 @@
       .title-container:hover .title-hover {
         opacity: 1;
       }
+      .gallery {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 0 22px 18px;
+        gap: 16px;
+      }
+      .viewer-wrap {
+        flex: 1;
+        display: grid;
+        place-items: center;
+        padding: 10px 0 4px;
+        min-height: 0;
+      }
+      .viewer {
+        position: relative;
+        width: min(90vw, 1200px);
+        height: min(72vh, calc(100vh - 240px));
+        background: transparent;
+        overflow: visible;
+        display: grid;
+        grid-template-columns: 72px minmax(0, 1fr) 72px;
+        align-items: center;
+        gap: 10px;
+      }
+      .viewer img {
+        min-width: 0;
+        min-height: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+        opacity: 0;
+        transition: opacity 0.55s ease;
+        will-change: opacity;
+        grid-column: 2;
+        grid-row: 1;
+        filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.08));
+      }
+      .viewer img.is-visible {
+        opacity: 1;
+      }
+      .nav-arrow {
+        position: relative;
+        transform: none;
+        width: 56px;
+        height: 56px;
+        border: none;
+        border-radius: 50%;
+        background: rgba(255, 250, 235, 0.72);
+        color: #332913;
+        font-size: 34px;
+        line-height: 1;
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.14);
+        user-select: none;
+        z-index: 2;
+        opacity: 0.9;
+        transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
+      }
+      .nav-arrow:hover {
+        background: rgba(255, 250, 235, 1);
+        transform: scale(1.06);
+        opacity: 1;
+      }
+      .nav-arrow.left {
+        grid-column: 1;
+        justify-self: center;
+      }
+      .nav-arrow.right {
+        grid-column: 3;
+        justify-self: center;
+      }
+      .thumb-strip {
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+        align-items: center;
+        overflow-x: auto;
+        padding: 10px 14px 6px;
+        scrollbar-width: thin;
+        background: transparent;
+        border-top: 1px solid rgba(63, 48, 22, 0.12);
+      }
+      .thumb {
+        flex: 0 0 auto;
+        height: 92px;
+        border: none;
+        background: transparent;
+        padding: 0 4px;
+        cursor: pointer;
+        opacity: 0.4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.22s ease, opacity 0.18s ease;
+      }
+      .thumb:hover {
+        opacity: 0.75;
+        transform: translateY(-10px) scale(1.05);
+      }
+      .thumb.active {
+        opacity: 1;
+        transform: translateY(-4px);
+      }
+      .thumb img {
+        width: auto;
+        height: 100%;
+        max-width: 100%;
+        object-fit: contain;
+        display: block;
+      }
+      @media (max-width: 700px) {
+        .gallery {
+          padding: 0 10px 10px;
+          gap: 8px;
+        }
+        .viewer {
+          width: 96vw;
+          height: min(76vh, calc(100vh - 180px));
+          grid-template-columns: 54px minmax(0, 1fr) 54px;
+          gap: 8px;
+        }
+        .nav-arrow {
+          width: 46px;
+          height: 46px;
+          font-size: 28px;
+        }
+        .thumb {
+          height: 74px;
+        }
+        .thumb:hover {
+          opacity: 0.75;
+          transform: translateY(-6px) scale(1.03);
+        }
+      }
     </style>
   </head>
   <body>
-    <header>
-      <a href="index.html">
-        <div class="title-container">
-          <div class="title-base"></div>
-          <div class="title-hover"></div>
-        </div>
-      </a>
-    </header>
-    <h1>Environments</h1>
-    <p>Placeholder content.</p>
+    <div class="page">
+      <header>
+        <a href="index.html">
+          <div class="title-container">
+            <div class="title-base"></div>
+            <div class="title-hover"></div>
+          </div>
+        </a>
+      </header>
+
+      <main class="gallery">
+        <section class="viewer-wrap">
+          <div class="viewer" aria-label="Environment viewer">
+            <button class="nav-arrow left" type="button" aria-label="Previous environment">
+              &#8249;
+            </button>
+            <img id="mainImageA" src="" alt="Environment image" />
+            <img id="mainImageB" src="" alt="Environment image" />
+            <button class="nav-arrow right" type="button" aria-label="Next environment">
+              &#8250;
+            </button>
+          </div>
+        </section>
+
+        <nav class="thumb-strip" id="thumbStrip" aria-label="Environment thumbnails"></nav>
+      </main>
+    </div>
+
+    <script>
+      const environments = [
+        "environment_assets/ENVIRONMENT01.png",
+        "environment_assets/ENVIRONMENT02.png",
+        "environment_assets/ENVIRONMENT04.png",
+        "environment_assets/ENVIRONMENT05.png",
+        "environment_assets/ENVIRONMENT06.png",
+      ];
+
+      const mainImages = [
+        document.getElementById("mainImageA"),
+        document.getElementById("mainImageB"),
+      ];
+      const thumbStrip = document.getElementById("thumbStrip");
+      const leftArrow = document.querySelector(".nav-arrow.left");
+      const rightArrow = document.querySelector(".nav-arrow.right");
+      let currentIndex = 0;
+      let visibleImageIndex = 0;
+      const preloadImages = environments.map((src) => {
+        const image = new Image();
+        image.src = src;
+        return image;
+      });
+
+      function setEnvironment(index) {
+        currentIndex = (index + environments.length) % environments.length;
+        const nextImage = mainImages[1 - visibleImageIndex];
+        const currentImage = mainImages[visibleImageIndex];
+        nextImage.src = environments[currentIndex];
+        nextImage.alt = `Environment ${String(currentIndex + 1).padStart(2, "0")}`;
+        requestAnimationFrame(() => {
+          nextImage.classList.add("is-visible");
+          currentImage.classList.remove("is-visible");
+          visibleImageIndex = 1 - visibleImageIndex;
+        });
+        [...thumbStrip.children].forEach((thumb, thumbIndex) => {
+          thumb.classList.toggle("active", thumbIndex === currentIndex);
+        });
+      }
+
+      environments.forEach((src, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "thumb";
+        button.setAttribute("aria-label", `Show environment ${index + 1}`);
+
+        const img = document.createElement("img");
+        img.src = src;
+        img.alt = `Thumbnail for environment ${index + 1}`;
+        button.appendChild(img);
+
+        button.addEventListener("click", () => setEnvironment(index));
+        thumbStrip.appendChild(button);
+      });
+
+      leftArrow.addEventListener("click", () => setEnvironment(currentIndex - 1));
+      rightArrow.addEventListener("click", () => setEnvironment(currentIndex + 1));
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowLeft") setEnvironment(currentIndex - 1);
+        if (event.key === "ArrowRight") setEnvironment(currentIndex + 1);
+      });
+
+      setEnvironment(0);
+    </script>
   </body>
 </html>
