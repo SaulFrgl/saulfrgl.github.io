@@ -3,35 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact</title>
+    <title>More Info</title>
     <link rel="icon" href="assets/ICON.png" type="image/png" />
     <style>
       html {
         scrollbar-gutter: stable;
       }
       body {
+        margin: 0;
+        min-height: 100vh;
         background-image: url("assets/background.png");
         background-size: cover;
         background-repeat: no-repeat;
         background-attachment: fixed;
-        margin: 0;
-        padding: 112px 20px 20px;
         font-family: Arial, sans-serif;
-        position: relative;
-        overflow-y: scroll;
+        color: #20190f;
         overflow-x: hidden;
       }
-      header {
-        position: fixed;
-        top: 4px;
-        left: 0;
-        right: 0;
-        display: flex;
-        justify-content: center;
-        line-height: 0;
-        z-index: 10;
-      }
-      header a { display: block; }
       .saul-container {
         position: fixed;
         right: 4vw;
@@ -56,6 +44,19 @@
           width: min(44vw, 22vh);
         }
       }
+      header {
+        position: fixed;
+        top: 4px;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        line-height: 0;
+        z-index: 10;
+      }
+      header a {
+        display: block;
+      }
       .title-container {
         position: relative;
         width: 360px;
@@ -63,10 +64,10 @@
         margin: 0 auto 4px;
         cursor: pointer;
       }
-      .title-base, .title-hover {
+      .title-base,
+      .title-hover {
         position: absolute;
-        top: 0;
-        left: 0;
+        inset: 0;
         width: 100%;
         height: 100%;
         background-size: contain;
@@ -88,54 +89,20 @@
       .title-container:hover .title-hover {
         opacity: 1;
       }
-      .contact-copy {
-        max-width: 760px;
-        margin: 40px auto 0;
-        padding: 0 20px;
+      main {
+        max-width: 820px;
+        margin: 0 auto;
+        padding: 132px 20px 60px;
+      }
+      .intro {
         font-size: clamp(1rem, 1.6vw, 1.35rem);
-        line-height: 1.55;
+        line-height: 1.6;
         text-align: center;
-        color: #20190f;
+        white-space: pre-line;
       }
-      .contact-copy p {
-        margin: 0 0 18px;
-      }
-      .contact-copy a {
-        color: inherit;
-        text-decoration-thickness: 1px;
-        text-underline-offset: 3px;
-      }
-      .contact-image {
-        position: relative;
-        width: min(42vw, 520px);
-        aspect-ratio: 1 / 1;
-        margin: 28px auto 0;
-        cursor: pointer;
-      }
-      .contact-image-base,
-      .contact-image-hover {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        transition: opacity 0.3s;
-      }
-      .contact-image-base {
-        background-image: url("assets/contact me 01.png");
-        opacity: 1;
-      }
-      .contact-image-hover {
-        background-image: url("assets/contact me 02.png");
-        opacity: 0;
-      }
-      .contact-image:hover .contact-image-base {
-        opacity: 0;
-      }
-      .contact-image:hover .contact-image-hover {
-        opacity: 1;
+      .intro strong {
+        display: block;
+        margin-bottom: 18px;
       }
     </style>
   </head>
@@ -148,22 +115,17 @@
         </div>
       </a>
     </header>
-    <main class="contact-copy">
-      <p>
-        I’m always open to work (as long as I’m getting paid), I love animation the
-        most but I’ve worked on storyboarding, 2D game concept art, comics…
-        Basically anything to do with drawing, I’m down with!
-      </p>
-      <p>
-        You can contact me at
-        <a href="mailto:saulfrgl@gmail.com">saulfrgl@gmail.com</a>
-      </p>
-      <div class="contact-image" aria-label="Contact image">
-        <div class="contact-image-base"></div>
-        <div class="contact-image-hover"></div>
+    <main>
+      <div class="intro">
+        <strong>Some stuff about me</strong>
+        I’m French, which means I criticise cinema like I’m an acclaimed director and I judge food like I’m a certified chef. I grew up in Saint-Denis, a town stuck between Paris and the countryside.
+
+        Now I live in London, which isn’t much better, cause the cars are on the wrong side and nobody speaks with their hands.
+
+        When people asked what I wanted to do when I grow up, I always said "draw" to my parents, my teachers, my psychiatrist and my counselors. Some of them believed me and some didn’t, but who’s laughing now ?
       </div>
     </main>
-    <a href="more_info.html" aria-label="More info about Saul">
+    <a href="more_info.html" aria-label="Saul image">
       <div class="saul-container"></div>
     </a>
   </body>
