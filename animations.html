@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Animations</title>
     <link rel="icon" href="assets/ICON.png" type="image/png" />
+    <link rel="preload" href="assets/SAUL02 NO TABLE.png" as="image" />
     <style>
       html {
         scrollbar-gutter: stable;
@@ -38,16 +39,34 @@
         bottom: 0;
         width: min(26vw, 30vh);
         aspect-ratio: 2282 / 955;
-        background-image: url("assets/SAUL01 NO TABLE.png");
+        cursor: pointer;
+        z-index: 2;
+      }
+      .saul-base,
+      .saul-hover {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         background-size: contain;
         background-repeat: no-repeat;
         background-position: bottom right;
-        cursor: pointer;
-        z-index: 2;
-        transition: background-image 0.3s ease;
+        transition: opacity 0.3s;
       }
-      .saul-container:hover {
+      .saul-base {
+        background-image: url("assets/SAUL01 NO TABLE.png");
+        opacity: 1;
+      }
+      .saul-hover {
         background-image: url("assets/SAUL02 NO TABLE.png");
+        opacity: 0;
+      }
+      .saul-container:hover .saul-base {
+        opacity: 0;
+      }
+      .saul-container:hover .saul-hover {
+        opacity: 1;
       }
       @media (orientation: portrait) {
         .saul-container {
@@ -58,8 +77,8 @@
       }
       .title-container {
         position: relative;
-        width: 360px;
-        height: 94px;
+        width: 945px;
+        height: 248px;
         margin: 0 auto 4px;
         cursor: pointer;
       }
@@ -316,8 +335,9 @@
         ></iframe>
       </div>
     </div>
-    <a href="more_info.html" aria-label="More info about Saul">
-      <div class="saul-container"></div>
-    </a>
+    <div class="saul-container" aria-label="Saul">
+      <div class="saul-base"></div>
+      <div class="saul-hover"></div>
+    </div>
   </body>
 </html>

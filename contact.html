@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact</title>
     <link rel="icon" href="assets/ICON.png" type="image/png" />
+    <link rel="preload" href="assets/ABOUT ME 02.png" as="image" />
+    <link rel="preload" href="assets/SAUL02 NO TABLE.png" as="image" />
     <style>
       html {
         scrollbar-gutter: stable;
@@ -15,21 +17,16 @@
         background-repeat: no-repeat;
         background-attachment: fixed;
         margin: 0;
-        padding: 112px 20px 20px;
+        padding: 20px 20px 20px;
         font-family: Arial, sans-serif;
         position: relative;
         overflow-y: scroll;
         overflow-x: hidden;
       }
       header {
-        position: fixed;
-        top: 4px;
-        left: 0;
-        right: 0;
         display: flex;
         justify-content: center;
-        line-height: 0;
-        z-index: 10;
+        padding-top: 4px;
       }
       header a { display: block; }
       .saul-container {
@@ -38,16 +35,34 @@
         bottom: 0;
         width: min(26vw, 30vh);
         aspect-ratio: 2282 / 955;
-        background-image: url("assets/SAUL01 NO TABLE.png");
+        cursor: pointer;
+        z-index: 2;
+      }
+      .saul-base,
+      .saul-hover {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         background-size: contain;
         background-repeat: no-repeat;
         background-position: bottom right;
-        cursor: pointer;
-        z-index: 2;
-        transition: background-image 0.3s ease;
+        transition: opacity 0.3s;
       }
-      .saul-container:hover {
+      .saul-base {
+        background-image: url("assets/SAUL01 NO TABLE.png");
+        opacity: 1;
+      }
+      .saul-hover {
         background-image: url("assets/SAUL02 NO TABLE.png");
+        opacity: 0;
+      }
+      .saul-container:hover .saul-base {
+        opacity: 0;
+      }
+      .saul-container:hover .saul-hover {
+        opacity: 1;
       }
       @media (orientation: portrait) {
         .saul-container {
@@ -58,8 +73,8 @@
       }
       .title-container {
         position: relative;
-        width: 360px;
-        height: 94px;
+        width: 945px;
+        height: 248px;
         margin: 0 auto 4px;
         cursor: pointer;
       }
@@ -90,7 +105,7 @@
       }
       .contact-copy {
         max-width: 760px;
-        margin: 40px auto 0;
+        margin: 0 auto;
         padding: 0 20px;
         font-size: clamp(1rem, 1.6vw, 1.35rem);
         line-height: 1.55;
@@ -104,6 +119,11 @@
         color: inherit;
         text-decoration-thickness: 1px;
         text-underline-offset: 3px;
+      }
+      .contact-copy h2 {
+        font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+        margin: 36px 0 14px;
+        color: #20190f;
       }
       .contact-image {
         position: relative;
@@ -137,6 +157,40 @@
       .contact-image:hover .contact-image-hover {
         opacity: 1;
       }
+      .about-me-container {
+        position: relative;
+        width: 660px;
+        max-width: 85vw;
+        height: 172px;
+        margin: 40px auto 0;
+        cursor: pointer;
+      }
+      .about-me-base,
+      .about-me-hover {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: opacity 0.3s;
+      }
+      .about-me-base {
+        background-image: url("assets/ABOUT ME 01.png");
+        opacity: 1;
+      }
+      .about-me-hover {
+        background-image: url("assets/ABOUT ME 02.png");
+        opacity: 0;
+      }
+      .about-me-container:hover .about-me-base {
+        opacity: 0;
+      }
+      .about-me-container:hover .about-me-hover {
+        opacity: 1;
+      }
     </style>
   </head>
   <body>
@@ -150,21 +204,48 @@
     </header>
     <main class="contact-copy">
       <p>
-        I’m always open to work (as long as I’m getting paid), I love animation the
-        most but I’ve worked on storyboarding, 2D game concept art, comics…
-        Basically anything to do with drawing, I’m down with!
+        I am currently available for paid freelance and full-time work in Visual Development, Comics, 2D Animation, &amp; Personal Commissions&hellip; Basically anything to do with drawing, I&rsquo;m down with!
       </p>
       <p>
         You can contact me at
         <a href="mailto:saulfrgl@gmail.com">saulfrgl@gmail.com</a>
       </p>
+      <p>
+        Check out my resume <a href="#">here</a>
+      </p>
       <div class="contact-image" aria-label="Contact image">
         <div class="contact-image-base"></div>
         <div class="contact-image-hover"></div>
       </div>
+      <h2>Some more stuff about me</h2>
+      <p>
+        I&rsquo;m French, which means I criticise cinema like I&rsquo;m an acclaimed director and I judge food like I&rsquo;m a certified chef. I grew up in Saint-Denis, a town stuck between Paris and the countryside.
+      </p>
+      <p>
+        Now I live in London, which isn&rsquo;t better, cause the cars are on the wrong side and nobody speaks with their hands.
+      </p>
+      <p>
+        When people asked what I wanted to do when I grow up, I always said &ldquo;draw&rdquo;, to my parents, my teachers, my psychiatrist and my counselors. Some of them believed me and some didn&rsquo;t, but who&rsquo;s laughing now?
+      </p>
+      <h2>Education</h2>
+      <p>
+        2018 &ndash; 2020<br />
+        BA Illustration and Narrative Art<br />
+        Auguste Renoir School of Art, Paris, France
+      </p>
+      <p>
+        2020 &ndash; 2022<br />
+        BA (HON) Illustration<br />
+        Camberwell College of Arts, London, United Kingdom
+      </p>
+      <div class="about-me-container" aria-label="About me">
+        <div class="about-me-base"></div>
+        <div class="about-me-hover"></div>
+      </div>
     </main>
-    <a href="more_info.html" aria-label="More info about Saul">
-      <div class="saul-container"></div>
-    </a>
+    <div class="saul-container" aria-label="Saul">
+      <div class="saul-base"></div>
+      <div class="saul-hover"></div>
+    </div>
   </body>
 </html>
