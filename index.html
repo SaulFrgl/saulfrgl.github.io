@@ -26,28 +26,26 @@
         background-repeat: no-repeat;
         background-attachment: fixed;
         margin: 0;
-        padding: 0;
+        padding: 24px 20px 0;
         font-family: Arial, sans-serif;
         width: 100%;
         height: 100%;
         overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-sizing: border-box;
       }
       header {
-        position: fixed;
-        top: 4px;
-        left: 0;
-        right: 0;
         display: flex;
         justify-content: center;
-        line-height: 0;
-        z-index: 10;
       }
       header a { display: block; }
       .title-container {
         position: relative;
-        width: min(945px, 90vw);
-        height: 248px;
-        margin: 0 auto 4px;
+        width: min(70vw, 900px);
+        aspect-ratio: 945 / 248;
+        margin: 0 auto;
         cursor: pointer;
       }
       .title-base,
@@ -77,14 +75,11 @@
         opacity: 1;
       }
       .content-wrapper {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 14px;
+        margin-bottom: auto;
       }
       .main-row {
         display: flex;
