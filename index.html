@@ -45,8 +45,8 @@
       header a { display: block; }
       .title-container {
         position: relative;
-        width: 630px;
-        height: 165px;
+        width: 945px;
+        height: 248px;
         margin: 0 auto 4px;
         cursor: pointer;
       }
@@ -100,13 +100,34 @@
         flex-wrap: wrap;
       }
       .image-container {
+        position: relative;
         width: min(18vw, 28vh);
         height: min(18vw, 28vh);
+        cursor: pointer;
+      }
+      .img-base,
+      .img-hover {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         background-size: contain;
         background-repeat: no-repeat;
         background-position: bottom center;
-        cursor: pointer;
-        transition: background-image 0.3s;
+        transition: opacity 0.3s;
+      }
+      .img-base {
+        opacity: 1;
+      }
+      .img-hover {
+        opacity: 0;
+      }
+      .image-container:hover .img-base {
+        opacity: 0;
+      }
+      .image-container:hover .img-hover {
+        opacity: 1;
       }
       @media (orientation: portrait) {
         .image-container {
@@ -122,30 +143,32 @@
           height: min(46vw, 12vh);
         }
       }
-      .contact {
+      .contact .img-base {
         background-image: url("assets/CONTACT01.png");
       }
-      .contact:hover {
+      .contact .img-hover {
         background-image: url("assets/CONTACT02.png");
       }
-      .environments {
+      .environments .img-base {
         background-image: url("assets/ENVIRONMENTS01.png");
       }
-      .environments:hover {
+      .environments .img-hover {
         background-image: url("assets/ENVIRONMENTS02.png");
       }
-      .figure {
+      .figure .img-base {
         background-image: url("assets/FIGURE01.png");
       }
-      .figure:hover {
+      .figure .img-hover {
         background-image: url("assets/FIGURE02.png");
       }
       .animations {
-        background-image: url("assets/TV01.png");
         width: calc(min(18vw, 28vh) * 1.15);
         height: calc(min(18vw, 28vh) * 1.15);
       }
-      .animations:hover {
+      .animations .img-base {
+        background-image: url("assets/TV01.png");
+      }
+      .animations .img-hover {
         background-image: url("assets/TV02.png");
       }
       .small-asset {
@@ -234,16 +257,28 @@
     <div class="content-wrapper">
       <div class="main-row">
         <a href="animations.html">
-          <div class="image-container animations"></div>
+          <div class="image-container animations">
+            <div class="img-base"></div>
+            <div class="img-hover"></div>
+          </div>
         </a>
         <a href="figure.html">
-          <div class="image-container figure"></div>
+          <div class="image-container figure">
+            <div class="img-base"></div>
+            <div class="img-hover"></div>
+          </div>
         </a>
         <a href="environments.html">
-          <div class="image-container environments"></div>
+          <div class="image-container environments">
+            <div class="img-base"></div>
+            <div class="img-hover"></div>
+          </div>
         </a>
         <a href="contact.html">
-          <div class="image-container contact"></div>
+          <div class="image-container contact">
+            <div class="img-base"></div>
+            <div class="img-hover"></div>
+          </div>
         </a>
       </div>
       <div class="small-row">
