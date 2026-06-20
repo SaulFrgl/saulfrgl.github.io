@@ -29,7 +29,9 @@
         font-family: Arial, sans-serif;
         color: #2d2414;
         position: relative;
-        overflow: hidden;
+        padding: 20px 20px 20px;
+        overflow-y: auto;
+        overflow-x: hidden;
       }
       body::before {
         content: "";
@@ -41,14 +43,9 @@
         pointer-events: none;
       }
       header {
-        position: fixed;
-        top: 4px;
-        left: 0;
-        right: 0;
         display: flex;
         justify-content: center;
-        line-height: 0;
-        z-index: 10;
+        padding-top: 4px;
       }
       header a {
         display: block;
@@ -59,11 +56,11 @@
         flex-direction: column;
         position: relative;
         z-index: 1;
-        padding-top: 112px;
+        padding-top: 0;
       }
       .title-container {
         position: relative;
-        width: 945px;
+        width: min(945px, 90vw);
         height: 248px;
         margin: 0 auto 4px;
         cursor: pointer;
