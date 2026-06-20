@@ -308,10 +308,12 @@
       </main>
     </div>
 
-    <div class="saul-container" aria-label="Saul">
-      <div class="saul-base"></div>
-      <div class="saul-hover"></div>
-    </div>
+    <a href="index.html" aria-label="Back to home">
+      <div class="saul-container" aria-label="Saul">
+        <div class="saul-base"></div>
+        <div class="saul-hover"></div>
+      </div>
+    </a>
 
     <script>
       const figures = [
@@ -349,16 +351,25 @@
         currentIndex = (index + figures.length) % figures.length;
         const nextImage = mainImages[1 - visibleImageIndex];
         const currentImage = mainImages[visibleImageIndex];
+        var targetIndex = currentIndex;
         nextImage.src = figures[currentIndex];
-        nextImage.alt = `Figure ${String(currentIndex + 1).padStart(2, "0")}`;
-        requestAnimationFrame(() => {
+        nextImage.alt = "Figure " + String(currentIndex + 1).padStart(2, "0");
+        function swap() {
+          if (currentIndex !== targetIndex) return;
+          nextImage.onload = null;
           nextImage.classList.add("is-visible");
           currentImage.classList.remove("is-visible");
           visibleImageIndex = 1 - visibleImageIndex;
-        });
-        [...thumbStrip.children].forEach((thumb, thumbIndex) => {
-          thumb.classList.toggle("active", thumbIndex === currentIndex);
-        });
+        }
+        if (nextImage.complete) {
+          swap();
+        } else {
+          nextImage.onload = swap;
+        }
+        var thumbs = thumbStrip.children;
+        for (var i = 0; i < thumbs.length; i++) {
+          thumbs[i].classList.toggle("active", i === currentIndex);
+        }
       }
 
       figures.forEach((src, index) => {
