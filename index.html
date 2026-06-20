@@ -11,6 +11,9 @@
     <link rel="preload" href="assets/TV02.png" as="image" />
     <link rel="preload" href="assets/STICKERS02.png" as="image" />
     <link rel="preload" href="assets/SAUL02 NO TABLE.png" as="image" />
+    <link rel="preload" href="small_assets/channel02.png" as="image" />
+    <link rel="preload" href="small_assets/PATREON02.png" as="image" />
+    <link rel="preload" href="small_assets/STICKERS02.png" as="image" />
     <style>
       html {
         scrollbar-gutter: stable;
@@ -23,7 +26,7 @@
         background-repeat: no-repeat;
         background-attachment: fixed;
         margin: 0;
-        padding: 112px 14px 10px;
+        padding: 0;
         font-family: Arial, sans-serif;
         width: 100%;
         height: 100%;
@@ -42,8 +45,8 @@
       header a { display: block; }
       .title-container {
         position: relative;
-        width: 360px;
-        height: 94px;
+        width: 630px;
+        height: 165px;
         margin: 0 auto 4px;
         cursor: pointer;
       }
@@ -73,13 +76,23 @@
       .title-container:hover .title-hover {
         opacity: 1;
       }
-      .grid {
-        display: grid;
-        gap: 0;
-        justify-items: center;
-        margin-top: -18px;
+      .content-wrapper {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
       }
-      .row {
+      .main-row {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        gap: 6px;
+      }
+      .small-row {
         display: flex;
         justify-content: center;
         align-items: flex-end;
@@ -87,8 +100,8 @@
         flex-wrap: wrap;
       }
       .image-container {
-        width: min(26vw, 36vh);
-        height: min(26vw, 36vh);
+        width: min(18vw, 28vh);
+        height: min(18vw, 28vh);
         background-size: contain;
         background-repeat: no-repeat;
         background-position: bottom center;
@@ -103,6 +116,10 @@
         .animations {
           width: calc(min(86vw, 20vh) * 1.15);
           height: calc(min(86vw, 20vh) * 1.15);
+        }
+        .small-asset {
+          width: min(46vw, 12vh);
+          height: min(46vw, 12vh);
         }
       }
       .contact {
@@ -125,17 +142,59 @@
       }
       .animations {
         background-image: url("assets/TV01.png");
-        width: calc(min(26vw, 36vh) * 1.15);
-        height: calc(min(26vw, 36vh) * 1.15);
+        width: calc(min(18vw, 28vh) * 1.15);
+        height: calc(min(18vw, 28vh) * 1.15);
       }
       .animations:hover {
         background-image: url("assets/TV02.png");
       }
-      .stickers {
-        background-image: url("assets/STICKERS01.png");
+      .small-asset {
+        position: relative;
+        width: min(12vw, 16vh);
+        height: min(12vw, 16vh);
+        cursor: pointer;
       }
-      .stickers:hover {
-        background-image: url("assets/STICKERS02.png");
+      .small-base,
+      .small-hover {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: bottom center;
+        transition: opacity 0.3s;
+      }
+      .small-base {
+        opacity: 1;
+      }
+      .small-hover {
+        opacity: 0;
+      }
+      .small-asset:hover .small-base {
+        opacity: 0;
+      }
+      .small-asset:hover .small-hover {
+        opacity: 1;
+      }
+      .channel .small-base {
+        background-image: url("small_assets/channel01.png");
+      }
+      .channel .small-hover {
+        background-image: url("small_assets/channel02.png");
+      }
+      .patreon .small-base {
+        background-image: url("small_assets/PATREON01.png");
+      }
+      .patreon .small-hover {
+        background-image: url("small_assets/PATREON02.png");
+      }
+      .stickers-small .small-base {
+        background-image: url("small_assets/STICKERS01.png");
+      }
+      .stickers-small .small-hover {
+        background-image: url("small_assets/STICKERS02.png");
       }
       .saul-container {
         position: fixed;
@@ -172,24 +231,39 @@
         </div>
       </a>
     </header>
-    <div class="grid">
-      <div class="row top-row">
+    <div class="content-wrapper">
+      <div class="main-row">
         <a href="animations.html">
           <div class="image-container animations"></div>
         </a>
         <a href="figure.html">
           <div class="image-container figure"></div>
         </a>
-      </div>
-      <div class="row bottom-row">
         <a href="environments.html">
           <div class="image-container environments"></div>
         </a>
-        <a href="https://sauls.store">
-          <div class="image-container stickers"></div>
-        </a>
         <a href="contact.html">
           <div class="image-container contact"></div>
+        </a>
+      </div>
+      <div class="small-row">
+        <a href="https://www.youtube.com/@saulfr">
+          <div class="small-asset channel">
+            <div class="small-base"></div>
+            <div class="small-hover"></div>
+          </div>
+        </a>
+        <a href="https://www.patreon.com/saulfr">
+          <div class="small-asset patreon">
+            <div class="small-base"></div>
+            <div class="small-hover"></div>
+          </div>
+        </a>
+        <a href="https://sauls.store">
+          <div class="small-asset stickers-small">
+            <div class="small-base"></div>
+            <div class="small-hover"></div>
+          </div>
         </a>
       </div>
     </div>
